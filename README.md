@@ -1,36 +1,152 @@
-# eleventy-site
-Simple eleventy starter site.
+# Tutorial: Deploying a basic Eleventy app on Jekyo
 
-Demo: https://bjankord.github.io/eleventy-site/
+Demo app [here](https://eleventy-demo.jekyo.app/)
 
-## Usage
-You can clone the repo with the following command:
+### Prerequisites
+
+Make sure you have [NodeJS](https://nodejs.org/en/download/), [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) and [git](https://github.com/git-guides/install-git) installed.
+
+If it's your first time using **Jekyo**, you can **install** it by running the following command in your terminal:
+
+`npm install -g jekyo`
+
+### Sign in to Jekyo
+
+You can sign in to Jekyo by running `jekyo user:signin`
+
 ```
-git clone https://github.com/bjankord/eleventy-site.git
+➜  ~ jekyo user:signin 
+Your email?: **************
+Your password?: **********
+You have successfully signed in!
+```
+If you don't have a Jekyo account, you can create one in the terminal by running `jekyo user:signup`. 
+
+## 1. Create a basic Eleventy app
+
+You can start your Eleventy project by using `jekyo create`
+
+Using the **arrows** on your keyboard, select **eleventy** and press **enter**.  
+```
+? Select template
+  None Creates only the application
+  expressjs A basic app skeleton using [Express](https://expressjs.com/)     
+  nuxt-js A boilerplate SSR application using [Nuxt.js](https://nuxtjs.org/) 
+❯ eleventy A basic starter app using [Eleventy](https://www.11ty.dev/)
+```
+When prompted, enter the desired name for your Eleventy app. 
+
+`Application name?: eleventy-tutorial`
+
+This will create a basic Eleventy app in the current directory by cloning this [Eleventy starter app](https://github.com/jekyo/eleventy-getting-started) repository.
+
+```
+Cloning source code... OK
+Application created!
 ```
 
-Alternatively, if you have `npm` >= 6 on your system, you can run
+### Deploy the Eleventy app on Jekyo
 
-```sh
-$ npm init @bjankord/eleventy-site my-site
+To deploy the app, first navigate to the newly created directory:
+
+`cd eleventy-tutorial`
+
+Now you can deploy this app to Jekyo by running: 
+
+`jekyo deploy`
+
+After a while, you should see something like this:
+
+```
+➜  Fetching source code ... OK
+➜  Building application, this might take a while ... OK
+➜  Publishing application, this might take a while  ... OK
+➜  Deploying application ... OK        
+➜  Waiting for application to start ... OK
+➜  Visit your app on: https://eleventy-tutorial.jekyo.app ... OK
 ```
 
-or if you have `npm` >= 5 on your system, you can run
+You can now browse to your Eleventy app on https://eleventy-tutorial.jekyo.app (replace 'eleventy-tutorial' with your app name)
 
-```sh
-$ npx @bjankord/create-eleventy-site my-site
+## 2. Deploying an existing Eleventy app
+
+Navigate to your local Eleventy app directory
+
+`cd my-eleventy-app`
+
+Initialize a git repository if you haven't already done so by running `git init`. 
+
+### Edit package.json
+
+Make sure your **package.json** file includes `--port $PORT` in **"serve"**. This specifies the necessary port variable for Jekyo. 
+
+In our package.json, scripts looks like this: 
+
+```
+"scripts": {
+    "build": "eleventy",
+    "watch": "eleventy --watch",
+    "serve": "npx @11ty/eleventy --serve --port $PORT --input=src --output=dist --formats=html,njk,gif,png,jpg,webp,css,js",
+    "build": "npx @11ty/eleventy --input=src --output=dist --formats=html,njk,gif,png,jpg,webp,css,js",
+    "start": "npm run build && npm run serve"
+  }
 ```
 
-And it will generate a site that matches the contents of this repo.
+### Create an empty Jekyo app:
 
-### Start the dev server
+`jekyo create` 
+
+Select 'none' using the **arrows** on your keyboard and press **enter**. This will create an app using your current directory. 
+
 ```
-npm run serve
+? Select template (Use arrow keys)
+❯ None Creates an application from your current directory
 ```
 
-### Build the static site
+Name your app: 
+
+`Application name?: my-eleventy-app`
+
+Run `jekyo link` to link your local app to the remote Jekyo app. Select 'my-eleventy-app' using the **arrows** on your keyboard and press **enter**.
+
 ```
-npm run build
+? Select application (Use arrow keys)
+❯ my-eleventy-app
+```
+### Now you can deploy this app to Jekyo by running: 
+
+`jekyo deploy`
+
+After a while, you should see something like this:
+
+```
+➜  Fetching source code ... OK
+➜  Building application, this might take a while ... OK
+➜  Publishing application, this might take a while  ... OK
+➜  Deploying application ... OK        
+➜  Waiting for application to start ... OK
+➜  Visit your app on: https://my-eleventy-app.jekyo.app ... OK
 ```
 
-For more information, check out the [eleventy docs](https://www.11ty.dev/).
+You can now browse to your Eleventy app on https://my-eleventy-app.jekyo.app (replace 'my-eleventy-app' with your app name)
+
+## Pushing local changes to Jekyo 
+
+Add the newly modified file(s) to the git index by using [git add](https://www.atlassian.com/git/tutorials/saving-changes)
+
+`git add filename`
+
+Create a [git commit](https://github.com/git-guides/git-commit)
+
+`git commit -m "your commit message"`
+
+Now, simply deploy your app again:
+
+`jekyo deploy`
+
+You will see your changes on your live app after a short while. 
+
+
+
+
+
