@@ -6,7 +6,8 @@
   "license": "MIT",
   "description": "Simple eleventy starter site",
   "scripts": {
-    "serve": "npx @11ty/eleventy --serve --port $PORT --host $HOST --input=src --output=dist --formats=html,njk,gif,png,jpg,webp,css,js",
-    "build": "npx @11ty/eleventy --input=src --output=dist --formats=html,njk,gif,png,jpg,webp,css,js"
+    "serve": "npx @11ty/eleventy --serve --input=src --output=dist --formats=html,njk,gif,png,jpg,webp,css,js",
+    "build": "npx @11ty/eleventy --input=src --output=dist --formats=html,njk,gif,png,jpg,webp,css,js",
+    "start": "npm run serve --port $PORT --host $HOST"
   }
 }
