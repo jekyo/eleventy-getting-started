@@ -8,7 +8,7 @@
   "scripts": {
     "build": "eleventy",
     "watch": "eleventy --watch",
-    "start": "npm run build && npm run serve --port $PORT --host $HOST"
+    "start": "npm install && npm run build && npm run serve --port $PORT --host $HOST"
   },
   "homepage": "https://github.com/11ty/eleventy-base-blog#readme",
   "devDependencies": {
