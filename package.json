@@ -8,7 +8,7 @@
   "scripts": {
     "build": "eleventy",
     "watch": "eleventy --watch",
-    "serve": "npx @11ty/eleventy --serve --port 4139 --host 0.0.0.0 --input=src --output=dist --formats=html,njk,gif,png,jpg,webp,css,js",
+    "serve": "npx @11ty/eleventy --serve --port 4139 --input=src --output=dist --formats=html,njk,gif,png,jpg,webp,css,js",
     "build": "npx @11ty/eleventy --input=src --output=dist --formats=html,njk,gif,png,jpg,webp,css,js",
     "start": "npm run build && npm run serve"
   }
