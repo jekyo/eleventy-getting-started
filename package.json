@@ -1,9 +1,6 @@
 {
-  "name": "eleventy-site",
-  "private": true,
+  "name": "eleventy-demo",
   "version": "1.0.0",
-  "author": "ink16",
-  "license": "MIT",
   "description": "Simple eleventy starter site",
   "scripts": {
     "build": "eleventy",
